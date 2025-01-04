@@ -1,23 +1,22 @@
 {
-  "name": "playwright-automation",
+  "name": "practice.com-automation",
   "version": "1.0.0",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test:cucumber": "cucumber-js --require-module ts-node/register --require ./steps/**/*.ts --require ./support/**/*.ts features/*.feature"
+    "test": "playwright test",
+    "build": "tsc",
+    "cucumber": "cucumber-js",
+    "allure:generate": "allure generate allure-results -o allure-report --clean"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "@cucumber/cucumber": "^11.1.1",
-    "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.3",
+    "@cucumber/cucumber": "^8.0.0",
+    "@playwright/test": "^1.41.1",
+    "@types/node": "^20.0.0",
+    "allure-commandline": "^2.13.8",
+    "allure-playwright": "^2.12.0",
+    "playwright": "^1.49.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
-  },
-  "dependencies": {
-    "path": "^0.12.7",
-    "playwright-automation": "file:"
   }
 }

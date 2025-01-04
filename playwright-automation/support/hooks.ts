@@ -1,10 +1,10 @@
 import { Before, After } from '@cucumber/cucumber';
-import { World } from './world';
+import { CustomWorld } from './world';
 
-Before(async function (this: World) {
-  await this.openBrowser();
+Before(async function(this: CustomWorld) {
+  await this.init();
 });
 
-After(async function (this: World) {
+After(async function(this: CustomWorld) {
   await this.closeBrowser();
-});
+}); 

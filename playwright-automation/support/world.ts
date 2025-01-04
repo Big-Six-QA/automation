@@ -1,18 +1,17 @@
-import { setWorldConstructor } from '@cucumber/cucumber';
-import { chromium, Page, Browser } from '@playwright/test';
+import { World, setWorldConstructor } from '@cucumber/cucumber';
+import { Page, Browser, chromium } from '@playwright/test';
 
-export class World {
-  browser!: Browser;
-  page!: Page;
-  shared: { [key: string]: any } = {};
-  productName?: string;
-  productDescription?: string;
-  productPrice?: string;
+export class CustomWorld extends World {
+  private page!: Page;
+  private browser!: Browser;
 
-  async openBrowser() {
-    this.browser = await chromium.launch({ headless: true });
-    const context = await this.browser.newContext();
-    this.page = await context.newPage();
+  async init() {
+    this.browser = await chromium.launch({ headless: false });
+    this.page = await this.browser.newPage();
+  }
+
+  getPage(): Page {
+    return this.page;
   }
 
   async closeBrowser() {
@@ -20,4 +19,4 @@ export class World {
   }
 }
 
-setWorldConstructor(World);
+setWorldConstructor(CustomWorld); 
